@@ -1,0 +1,211 @@
+/*css styles sheet */
+
+
+/*proposed color scheme
+
+
+
+34626c - darker blue
+374045 - darkest blue
+e27802 - burnt orange
+58391c - brown
+2c061f - purple
+
+
+
+
+*/
+
+
+
+
+
+body {
+    font-family: 'Rosario', sans-serif;
+    padding-top: 56px;
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Corben'; 
+}
+
+.colorful {
+    background: rgb(58,144,163);
+    background: linear-gradient(90deg, rgba(58,144,163,1) 0%, rgba(55,64,69,1) 59%);
+}
+
+/*|| Projects */
+
+.projects-jumbotron {
+    background: url(./images/projects.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.projects-jumbotron-text {
+    color:white;
+    padding-top: 20px;
+}
+
+
+/*|| Projects with flex-box practice*/
+
+.flex-header-display {
+    display: flex;
+    justify-content: center;
+}
+
+.flex-header {
+    max-width: 95%;
+    min-width: 80%;
+    background-color: #34626c;
+    height: 100px;
+    border-radius: 10px;
+}
+
+
+.flex-container {
+    background-color: pink;
+    text-align: center;
+    max-width: 95%;
+    min-width: 80%;
+    border-radius: 10px;
+}
+
+.projects-flex-header {
+    color:white;
+    padding-top: 20px;
+}
+
+
+.card-box-conatiner {
+    display: flex;
+    justify-content: center;
+
+}
+
+.card-box {
+    display: flex;
+    max-width: 95%;
+    min-width: 80%;
+    flex-flow: row wrap;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: lightblue;
+}
+
+.card-flex {
+    background-color: #0E1443;
+    color: white;
+    flex-grow: 1;
+    
+    max-width: 200px;
+    min-height: 300px;
+    padding: 20px;
+    justify-content: center;
+    margin: 30px;
+}
+
+.card-flex img {
+    width: 100%;
+    height: auto;
+    
+
+}
+
+/*|| Thoughts */
+
+.thoughts-jumbotron {
+    background: url(./images/thoughts.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.thoughts-image-big {
+    height: 360px;
+    width: 640px;
+}
+
+.thoughts-image-small {
+    height: 180px;
+    width: 320px;
+}
+
+.thoughts-main {
+    background-color: #F5FFFA;
+    padding-top: 15px;
+    text-align: center;
+}
+
+.thoughts-small {
+    background-color: #9BD3F9;
+    border: 4px solid #0E1443;
+    padding-top: 15px;
+    text-align: left;
+    margin: 10px;
+}
+
+.thoughts-main-post {
+    text-align: center;
+}
+
+
+/*|| About Me */
+
+.about-jumbotron {
+    background: url(./images/about-brick-wall.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+}
+
+.about-jumbotron-text {
+    font-size: 5.5rem;
+    line-height: 0.5;
+    color: white;
+}
+
+.about-text-box {
+    background-color: #F5FFFA;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+
+/* || index */
+
+.index-jumbotron {
+    background-color: #374045;
+}
+
+/* Bottom right text */
+.text-block {
+    position: absolute;
+    top: 0px;
+    left: 15px;
+    background-color: whitesmoke;
+    color:black;
+    opacity: 0.8;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    font-size: 26px;
+  }
+
+.index-text-box {
+    padding: 10px;
+    margin: 10px;
+}
+
+    /* Background image */
+.background-image {
+    background: url("/images/projects.png") no-repeat scroll 50% 50%;
+}
