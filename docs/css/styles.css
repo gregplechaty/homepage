@@ -38,7 +38,7 @@ h1, h2, h3, h4, h5, h6 {
 /*|| Projects */
 
 .projects-jumbotron {
-    background: url(./images/projects.png) no-repeat center center fixed;
+    background: url(../images/projects.png) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -119,7 +119,7 @@ h1, h2, h3, h4, h5, h6 {
 /*|| Thoughts */
 
 .thoughts-jumbotron {
-    background: url(./images/thoughts.jpg) no-repeat center center fixed;
+    background: url(../images/thoughts.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -158,7 +158,7 @@ h1, h2, h3, h4, h5, h6 {
 /*|| About Me */
 
 .about-jumbotron {
-    background: url(./images/about-brick-wall.jpg) no-repeat center center fixed;
+    background: url(../images/about-brick-wall.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -207,5 +207,5 @@ h1, h2, h3, h4, h5, h6 {
 
     /* Background image */
 .background-image {
-    background: url("/images/projects.png") no-repeat scroll 50% 50%;
+    background: url("../images/projects.png") no-repeat scroll 50% 50%;
 }
