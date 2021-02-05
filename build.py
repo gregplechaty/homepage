@@ -1,39 +1,54 @@
 ### Site Generator created  1/24 ###
-
-#top = open("./templates/top.html").read()
-bottom = open("./templates/bottom.html").read()
-index = open("./content/index.html").read()
-about = open("./content/about.html").read()
-projects = open("./content/projects.html").read()
-thoughts = open("./content/thoughts.html").read()
-
-
-#trying variables
+### refactored 2/3/21 ###
 from string import Template
+def main():
+    
+    pages = [
+        {
+            'title': 'Index',
+            'filename': "./content/index.html",
+            'output': "./docs/index.html",
+            
+        },
+        {
+            'title': 'Thoughts',
+            'filename': "./content/thoughts.html",
+            'output': "./docs/thoughts.html",
+            
+        },
+        {
+            'title': 'Projects',
+            'filename': "./content/projects.html",
+            'output': "./docs/projects.html",
+            
+        },
+        {
+            'title': 'About',
+            'filename': "./content/about.html",
+            'output': "./docs/about.html",
+            
+        },
+    ]
+    
+    def create_pages(pages):
+        for page in pages:
+            file_name = page['filename']
+            file_title = page['title']
+            file_output = page['output']
+            open_content = open(file_name).read()
+            content = open_content
+            print('Creating...', file_title)
+            top = open("./templates/top.html").read()
+            bottom = open("./templates/bottom.html").read()
+            top = Template(open("./templates/top.html").read())
+            top = top.safe_substitute(title='')
+            index_full = top + content + bottom
+            open(file_output, "w+").write(index_full)
 
-#index
-top = Template(open("./templates/top.html").read())
-top = top.safe_substitute(title='')
-index_full = top + index + bottom
 
-#about
-top = Template(open("./templates/top.html").read())
-top = top.safe_substitute(title=' - About')
-about_full = top + about + bottom
+    create_pages(pages)
 
-#projects
-top = Template(open("./templates/top.html").read())
-top = top.safe_substitute(title=' - Projects')
-projects_full = top + projects + bottom
 
-#thoughts
-top = Template(open("./templates/top.html").read())
-top = top.safe_substitute(title=' - Thoughts')
-thoughts_full = top + thoughts + bottom
+    print('Site complete! Please review for accuracy.')
 
-open("./docs/index.html", "w+").write(index_full)
-open("./docs/about.html", "w+").write(about_full)
-open("./docs/projects.html", "w+").write(projects_full)
-open("./docs/thoughts.html", "w+").write(thoughts_full)
-
-print('Site complete! Please review for accuracy.')
+main()

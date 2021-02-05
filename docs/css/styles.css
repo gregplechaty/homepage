@@ -1,24 +1,11 @@
 /*css styles sheet */
-
-
 /*proposed color scheme
-
-
-
 34626c - darker blue
 374045 - darkest blue
 e27802 - burnt orange
 58391c - brown
 2c061f - purple
-
-
-
-
 */
-
-
-
-
 
 body {
     font-family: 'Rosario', sans-serif;
@@ -51,70 +38,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-/*|| Projects with flex-box practice*/
-
-.flex-header-display {
-    display: flex;
-    justify-content: center;
-}
-
-.flex-header {
-    max-width: 95%;
-    min-width: 80%;
-    background-color: #34626c;
-    height: 100px;
-    border-radius: 10px;
-}
-
-
-.flex-container {
-    background-color: pink;
-    text-align: center;
-    max-width: 95%;
-    min-width: 80%;
-    border-radius: 10px;
-}
-
-.projects-flex-header {
-    color:white;
-    padding-top: 20px;
-}
-
-
-.card-box-conatiner {
-    display: flex;
-    justify-content: center;
-
-}
-
-.card-box {
-    display: flex;
-    max-width: 95%;
-    min-width: 80%;
-    flex-flow: row wrap;
-    justify-content: center;
-    border-radius: 10px;
-    background-color: lightblue;
-}
-
-.card-flex {
-    background-color: #0E1443;
-    color: white;
-    flex-grow: 1;
-    
-    max-width: 200px;
-    min-height: 300px;
-    padding: 20px;
-    justify-content: center;
-    margin: 30px;
-}
-
-.card-flex img {
-    width: 100%;
-    height: auto;
-    
-
-}
 
 /*|| Thoughts */
 
@@ -186,7 +109,6 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #374045;
 }
 
-/* Bottom right text */
 .text-block {
     position: absolute;
     top: 0px;
