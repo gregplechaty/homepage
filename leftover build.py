@@ -30,3 +30,43 @@
     top = Template(open("./templates/top.html").read())
     top = top.safe_substitute(title=' - Thoughts')
     thoughts_full = top + thoughts + bottom
+
+
+
+
+#current working code
+
+def create_padef create_pages(pages):
+        for page in pages:
+            file_name = page['filename']
+            file_title = page['title']
+            file_output = page['output']
+            page_content = open(file_name).read()
+            base = open("./templates/base.html").read()
+            print('Creating...', file_title)
+            base_template = Template(base)
+            complete_page = base_template.safe_substitute(content=page_content)
+            open(file_output, "w+").write(complete_page)
+
+
+    create_pages(pages)
+
+
+
+    def create_pages(pages):
+        for page in pages:
+            file_name = page['filename']
+            file_title = page['title']
+            file_output = page['output']
+
+            page_content = open(file_name).read()
+            base = open("./templates/base.html").read()
+            print('Creating...', file_title)
+
+            base_template = Template(base)
+            complete_page = base_template.safe_substitute(content=page_content)
+
+            open(file_output, "w+").write(complete_page)
+
+
+    create_pages(pages)

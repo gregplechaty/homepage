@@ -30,24 +30,32 @@ def main():
         },
     ]
     
-    def create_pages(pages):
-        for page in pages:
-            file_name = page['filename']
-            file_title = page['title']
-            file_output = page['output']
-            open_content = open(file_name).read()
-            content = open_content
-            print('Creating...', file_title)
-            top = open("./templates/top.html").read()
-            bottom = open("./templates/bottom.html").read()
-            top = Template(open("./templates/top.html").read())
-            top = top.safe_substitute(title='')
-            index_full = top + content + bottom
-            open(file_output, "w+").write(index_full)
+
+    def read_content(file_name):
+        return open(file_name).read()
+
+    def read_base():
+        return open("./templates/base.html").read()
+
+    def replace_placeholders(file,content):
+        base_template = Template(file)
+        return base_template.safe_substitute(content=content)
+
+    def write_pages(complete_page,filename):
+        open(filename, "w+").write(complete_page)
+
+    for page in pages:
+        file_name = page['filename']
+        file_output = page['output']
+        content = read_content(file_name)
+        base = read_base()
+        complete_page = replace_placeholders(base,content)
+        write_pages(complete_page,file_output)
 
 
-    create_pages(pages)
 
+
+    
 
     print('Site complete! Please review for accuracy.')
 
