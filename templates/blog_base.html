@@ -9,22 +9,27 @@
         <div class="container thoughts-main py-3">
             <div class="row">
                 <div class="col-12">
-                    <img src="./images/legos.jpg" class="thoughts-image-big img-fluid" alt="pile of legos">
+                    <img src=${blog_post_image} class="thoughts-image-big img-fluid" alt="pile of legos">
                 </div>                
             
             
                 <div class="col-12 thoughts-main-post">
-                    <h1>Too Many Pieces?</h1>
+                    <h1>${blog_post_title}</h1>
                 </div>
             
             
                 <div class="col-12">
-                    <h3>When the quantity of tools is immense, and your skills are not, how do you know where to start?</h3>
+                    <h3>${blog_post_subtitle}</h3>
                 </div>
+                
+                <div class="row justify-content-end">
+                    <div class="col-2">
+                        <a href="./thoughts.html" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Back</a>
+                    </div>
+                </div>
+
             
             </div>
-            <div>
-              <p>"At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-            </div>
-          
-      </div>
+            ${blog_post_content}
+        
+        </div>
