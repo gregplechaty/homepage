@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Greg Plechaty - {{ title }}</title>
+    <title>Greg Plechaty - Home</title>
     <meta name="my site" content="portfolio site">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/styles.css" />
@@ -23,29 +23,63 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          {% for page in pages_dict %}
-              {% if page.title == title %}
+          
+              
               <li class="nav-item active">
-              {% else %}
-              <li class="nav-item">
-              {% endif %}
-                <a class="nav-link" href={{ page.link }}>{{ page.title }}</a>
+              
+                <a class="nav-link" href=home.html>Home</a>
           </li>
-          {% endfor %}
+          
+              
+              <li class="nav-item">
+              
+                <a class="nav-link" href=about.html>About</a>
+          </li>
+          
+              
+              <li class="nav-item">
+              
+                <a class="nav-link" href=thoughts.html>Thoughts</a>
+          </li>
+          
+              
+              <li class="nav-item">
+              
+                <a class="nav-link" href=projects.html>Projects</a>
+          </li>
+          
         </ul>
       </div>
     </div>
   </nav>
 
 
-  {{ content }}
+  
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col">
+                    <a href="./projects.html"><img src="./images/projects.png" class="img-fluid rounded" alt="" /><p class="text-block">Projects</p></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <a href="./thoughts.html"><img src="./images/thoughts.jpg" class="img-fluid rounded" alt="" /><p class="text-block">Thoughts</p></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+          <a href="./about.html"><img src="./images/me_brick.jpg" class="img-fluid rounded" alt="" /><p class="text-block">About Me</p></a>  
+        </div>
+    </div>
+
 
 
 </div>
   <!-- Footer -->
 <footer class="py-5 bg-dark">
   <div class="container">
-    <p class="m-0 text-center text-white">Greg Plechaty, {{ get_year }}</p>
+    <p class="m-0 text-center text-white">Greg Plechaty, 2021</p>
   </div>
   <!-- /.container -->
 </footer>
@@ -58,4 +92,3 @@
 
 </body>
 </html>
-
