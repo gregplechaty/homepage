@@ -5,6 +5,7 @@ import datetime
 import glob
 import os
 from jinja2 import Template
+import re
 ##########################################################
 
 ### Create dictionaries - pages and blog_posts
@@ -26,32 +27,39 @@ def create_page_list():
         })
     return pages
 
-blog_posts = [
-    {
-        "filename": "blog/1_too_many_pieces.html",
-        "date": "January 15th, 2021",
-        "title": "Too Many Pieces?",
-        "subtitle": "When the quantity of tools is immense, and your skills are not, how do you know where to start?",
-        "output": "./docs/1_too_many_pieces.html",
-        "image": "./images/legos.jpg",
-    },
-    {
-        "filename": "blog/2_one_month_in.html",
-        "date": "February 7th, 2021",
-        "title": "Balance is hard.",
-        "subtitle": "Doing something new takes time what to give up?",
-        "output": "./docs/2_one_month_in.html",
-        "image": "./images/balance.jpg",
-    },
-    {
-        "filename": "blog/3.html",
-        "date": "September 15th, 2018",
-        "title": "My thoughts on Python so far",
-        "subtitle": "A lot can be done with just a few commands.",
-        "output": "./docs/3.html",
-        "image": "./images/coconuts.jpg",
-    },
-]
+
+def create_blog_posts_list():
+    all_blog_posts = glob.glob("blog/*.html")
+    blog_posts_dict = []
+    for post in all_blog_posts:
+        post_filename = os.path.basename(post)
+        name_only, extension = os.path.splitext(post_filename)
+        filename = "blog/" + post_filename
+        output = "./docs/" + post_filename
+        #grab post info from blog post html
+        blog_post_html = open(filename).read()
+        image_search = re.search(r'src=(.*?) class', blog_post_html).group(1)
+        date_search = re.search(r'<h6>(.*?)</h6>', blog_post_html).group(1)
+        title_search = re.search(r'<h1>(.*?)</h1>', blog_post_html).group(1)
+        subtitle_search = re.search(r'<h3>(.*?)</h3>', blog_post_html).group(1)
+        #prevent func from bombing
+        if False:
+            print("Blog information in html files is incomplete. These must be filled in before site can be generated. Aborting site generation.")
+            quit()
+        #else:
+        #    image = image_search.group(1)
+        #    date = date_search.group(1)
+        ######
+        blog_posts_dict.append({
+            "filename": filename,
+            "date": date_search,
+            "title": title_search,
+            "subtitle": subtitle_search,
+            "output": output,
+            "image": image_search,
+        })
+    return blog_posts_dict
+
 
 ### Create Blank html page (in content directory)
 
@@ -81,36 +89,18 @@ def placeholder_replacement_base(base,page_title,content,pages):
 
 ### write 'thoughts' blog pages
 
-
 def write_blog_posts(blog_posts,base,pages):
     for post in blog_posts:
-        #define variables
-        blog_post_date = post['date']
-        blog_post_title = post['title']
-        blog_post_subtitle = post['subtitle']
-        blog_post_output = post['output']
-        blog_post_image = post['image']
-        #read input files
-        blog_base = open("./templates/blog_base.html").read()
-        blog_post_content = open(post['filename']).read()
-        #set variable text
-        #Write blog
-        blog_base_template = Template(blog_base)
-        blog_base_final = blog_base_template.render({
-            'blog_post_image': blog_post_image,
-            'blog_post_title': blog_post_title,
-            'blog_post_subtitle': blog_post_subtitle,
-            'blog_post_content': blog_post_content,
-        })
+        blog_content = open(post['filename']).read()
         #write complete blog page
         base_template = Template(base)
         blog_page_final = base_template.render({
                                 'title': 'Thoughts',
                                 'pages_dict': pages,
-                                'content': blog_base_final,
+                                'content': blog_content,
                                 'get_year': datetime.datetime.now().strftime("%Y"),
         })
-        write_pages(blog_page_final,post['output'])
+        open(post['output'], "w+").write(blog_page_final)
 
 def write_thoughts_blog_past_posts(blog_posts_info,past_posts_html):
     blog_past_posts = '' #this is the placeholder to append each old post info
@@ -153,14 +143,6 @@ def write_thoughts_content(thoughts_base,blog_posts,blog_past_posts):
             )
 
 
-### write final pages
-
-
-def write_pages(complete_page,filename):
-    open(filename, "w+").write(complete_page)
-
-
-
 ###########################################################################################
 def main():
     pages = create_page_list()
@@ -172,17 +154,18 @@ def main():
         #read input files
         base = open("./templates/base.html").read()
         base_html = read_content(file_name)
+        blog_posts_dict = create_blog_posts_list()
         if page['title'] == 'Thoughts':
             #write specific blog post
-            write_blog_posts(blog_posts,base,pages)
+            write_blog_posts(blog_posts_dict,base,pages)
             #write thoughts - first past posts, then complete page
-            blog_past_posts = write_thoughts_blog_past_posts(blog_posts,"./templates/blog_past_post_base.html")
-            thought_content = write_thoughts_content(base_html,blog_posts,blog_past_posts)
+            blog_past_posts = write_thoughts_blog_past_posts(blog_posts_dict,"./templates/blog_past_post_base.html")
+            thought_content = write_thoughts_content(base_html,blog_posts_dict,blog_past_posts)
             #write 'content' for Thoughts main page
             complete_page = placeholder_replacement_base(base,file_title,thought_content,pages)
         else:
             complete_page = placeholder_replacement_base(base,file_title,base_html,pages)
-        write_pages(complete_page,file_output)
+        open(file_output, "w+").write(complete_page)
     
 
     print('Site complete! Please review for accuracy.')
